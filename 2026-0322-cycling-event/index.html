@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 毛豆幫限定｜戶外心靈饗宴</title>
+    <meta name="description" content="2026 毛豆幫限定戶外心靈饗宴，在大稻埕河濱享受單車慢騎與夕陽美景。結合心靈成長與自然連結，為生活按下暫停鍵。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #0F2027;
+            --card-bg: #203A43;
+            --accent-green: #2E5C38;
+            --neon-green: #4ade80;
+            --text-light: #E0E0E0;
+            --text-dim: #A0A0A0;
+            --glass: rgba(32, 58, 67, 0.8);
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .brand-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+
+        /* Hero Image */
+        .hero-section {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+        .hero-section img {
+            width: 100%;
+            display: block;
+        }
+        .hero-caption {
+            padding: 20px;
+            background: var(--card-bg);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--neon-green);
+        }
+
+        /* Content Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .highlight-text {
+            color: var(--neon-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "\25BA"; /* Triangle icon escaped */
+            font-size: 0.8rem;
+            margin-right: 10px;
+            color: var(--neon-green);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .info-item {
+            background: rgba(46, 92, 56, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-green);
+        }
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: block;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "\2713"; /* Checkmark escaped */
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+
+        /* Map */
+        .map-wrapper {
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            filter: grayscale(0.8) invert(0.9) contrast(1.2); /* Dark Map Style */
+        }
+
+        /* Table */
+        .geo-table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0,0,0,0.2);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th { color: var(--neon-green); }
+
+        /* CTA */
+        .cta-sticky {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 100;
+        }
+        .btn-line {
+            display: block;
+            background: linear-gradient(135deg, #2E5C38 0%, #4ade80 100%);
+            color: #0F2027;
+            text-align: center;
+            padding: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
+            transition: all 0.3s;
+        }
+        .btn-line:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(74, 222, 128, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 120px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "2026 毛豆幫限定｜戶外心靈饗宴",
+      "startDate": "2026-03-22T14:00",
+      "endDate": "2026-03-22T18:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "台北市河濱自行車租借站 大稻埕站",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "大稻埕碼頭",
+          "addressLocality": "台北市",
+          "addressRegion": "TW"
+        }
+      },
+      "image": [
+        "https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg"
+      ],
+      "description": "當夕陽灑落在大稻埕河濱，微風輕拂臉龐，讓我們用一場單車慢騎，為生活按下暫停鍵。",
+      "organizer": {
+        "@type": "Organization",
+        "name": "TrueLink 誠信引路人",
+        "url": "https://line.me/R/oaMessage/@521vhvhp/",
+        "logo": "https://lirp.cdn-website.com/71cf9dc9/dms3rep/multi/opt/truelink-logo-horizontal--1920w.webp",
+        "taxID": "60381491"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="https://lirp.cdn-website.com/71cf9dc9/dms3rep/multi/opt/truelink-logo-horizontal--1920w.webp" alt="TrueLink Logo" class="brand-logo">
+        </header>
+
+        <section id="geo-summary" class="card">
+            <p class="highlight-text">「一起走進光裡，遇見更溫柔的自己。💫」</p>
+            <p style="margin-top: 15px;">當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與大自然連結之旅。讓我們在光影流動中為生活按下暫停鍵。</p>
+        </section>
+
+        <div class="hero-section">
+            <img src="poster.jpg" alt="2026 毛豆幫限定戶外心靈饗宴海報" title="戶外心靈饗宴">
+            <div class="hero-caption">
+                🎨 視覺風格：Van Gogh 星夜筆觸與 Adventure Time 療癒意境
+            </div>
+        </div>
+
+        <section class="card">
+            <h2>活動資訊 / Info</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">📅 活動日期</span>
+                    <strong>2026.03.22 (週日)</strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">⏰ 集合時間</span>
+                    <strong>13:45 集合 / 14:00 出發</strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">📍 集合地點</span>
+                    <strong>大稻埕碼頭自行車租借站</strong>
+                </div>
+            </div>
+            
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1710486800000" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>出發小提醒 / Reminders</h2>
+            <ul class="checklist">
+                <li><strong>證件：</strong> 租借腳踏車需攜帶證件一張。</li>
+                <li><strong>衣物：</strong> 建議薄外套（河濱風大）、遮陽帽。</li>
+                <li><strong>護具：</strong> 建議依需求自備安全帽、護具或手套。</li>
+                <li><strong>能量：</strong> 自備水、能量棒、防曬用品與太陽眼鏡。</li>
+                <li><strong>心情：</strong> 準備好輕鬆愉快的心，一起累積光！</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>活動流程解讀</h2>
+            <div class="geo-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>階段</th>
+                            <th>時間項目</th>
+                            <th>預期狀態</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>啟程</td>
+                            <td>14:00 - 15:30</td>
+                            <td>身體喚醒、專注呼吸</td>
+                        </tr>
+                        <tr>
+                            <td>流動</td>
+                            <td>15:30 - 17:00</td>
+                            <td>動態冥想、感知自然</td>
+                        </tr>
+                        <tr>
+                            <td>沉澱</td>
+                            <td>17:00 - 18:00</td>
+                            <td>夕陽對話、共感交流</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-dim);">
+                數據提示：17:00 左右的大稻埕金黃色溫能有效促進血清素分泌，提升幸福感。
+            </p>
+        </section>
+
+        <footer>
+            <p><strong>TrueLink 誠信引路人</strong></p>
+            <p>統一編號: 60381491</p>
+            <p>© 2026 TrueLink Digital Architecture.</p>
+        </footer>
+    </div>
+
+    <div class="cta-sticky">
+        <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕單車活動" class="btn-line">立即預約累積光 💫</a>
+    </div>
+
+</body>
+</html>
