@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 毛豆幫限定｜戶外心靈饗宴</title>
-    <meta name="description" content="2026 毛豆幫限定戶外心靈饗宴，在大稻埕河濱享受單車慢騎與夕陽美景。結合心靈成長與自然連結，為生活按下暫停鍵。">
+    <meta name="description" content="2026 毛豆幫限定戶外心靈饗宴，在大稻埕河濱享受溫暖的單車慢騎與夕陽美景。結合心靈成長與自然連結，為生活按下暫停鍵。">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,23 +12,26 @@
     
     <style>
         :root {
-            --bg-deep: #0F2027;
-            --card-bg: #203A43;
-            --accent-green: #2E5C38;
-            --neon-green: #4ade80;
-            --text-light: #E0E0E0;
-            --text-dim: #A0A0A0;
-            --glass: rgba(32, 58, 67, 0.8);
+            /* 重新搭配的溫暖單車風格配色方案 (Sunset Warmth) */
+            --bg-deep: #FFBE98; /* Peach Fuzz gradient background */
+            --card-bg: #D08F74; /* Terracotta Rose translucency */
+            --accent-warm-rust: #8B4513; /* Deep Rust for boundaries */
+            --highlight-terracotta: #E07A5F; /* Terracotta Orange for visibility */
+            --text-cocoa: #5C4033; /* Deep Cocoa Brown for main text */
+            --text-dim-cocoa: #7F6A60; /* Dimmed warm taupe */
+            --glass-tint: rgba(255, 190, 152, 0.4); /* Amber-Rose translucent tint */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-light);
+            /* 日落暖色漸層 */
+            background: radial-gradient(circle at 50% 50%, var(--bg-deep) 0%, var(--card-bg) 100%);
+            color: var(--text-cocoa);
             font-family: 'Noto Sans TC', sans-serif;
             line-height: 1.8;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .container {
@@ -37,13 +40,32 @@
             padding: 20px;
         }
 
+        /* 移除 Logo 的 Header 補償：增加藝術圖騰連結單車主題 */
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0 20px;
+            position: relative;
         }
-        .brand-logo {
-            max-width: 180px;
-            margin-bottom: 20px;
+        .header-symbol {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFBE98 100%);
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10c22 0 40 18 40 40S72 90 50 90s-40-18-40-40S28 10 50 10zm0 10c16.6 0 30 13.4 30 30S66.6 80 50 80 20 66.6 20 50s13.4-30 30-30z"/><path d="M50 30v20h20"/><path d="M40 60c-11 0-20-9-20-20s9-20 20-20m20 40c11 0 20-9 20-20s-9-20-20-20"/></svg>'); /* minimalist wheel symbol */
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10c22 0 40 18 40 40S72 90 50 90s-40-18-40-40S28 10 50 10zm0 10c16.6 0 30 13.4 30 30S66.6 80 50 80 20 66.6 20 50s13.4-30 30-30z"/><path d="M50 30v20h20"/><path d="M40 60c-11 0-20-9-20-20s9-20 20-20m20 40c11 0 20-9 20-20s-9-20-20-20"/></svg>');
+            background-size: cover;
+        }
+        .header-symbol::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            top: 40px;
+            left: calc(50% - 60px);
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.1);
+            filter: blur(15px);
+            z-index: -1;
         }
 
         /* Hero Image */
@@ -51,9 +73,9 @@
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(92, 64, 51, 0.3); /* Cocoa shadow */
             margin-bottom: 40px;
-            border: 1px solid rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(224, 122, 95, 0.2); /* Terracotta boundary */
         }
         .hero-section img {
             width: 100%;
@@ -61,31 +83,34 @@
         }
         .hero-caption {
             padding: 20px;
-            background: var(--card-bg);
+            background: var(--glass-tint);
+            backdrop-filter: blur(5px);
             text-align: center;
             font-size: 0.9rem;
-            color: var(--neon-green);
+            color: var(--highlight-terracotta);
+            border-top: 1px solid rgba(92, 64, 51, 0.1);
         }
 
-        /* Content Card */
+        /* Content Card: 磨砂玻璃質感 + 琥珀玫瑰 tint */
         .card {
-            background: var(--glass);
+            background: var(--glass-tint);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 30px;
             border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 5px 15px rgba(92, 64, 51, 0.1);
         }
 
         .highlight-text {
-            color: var(--neon-green);
+            color: var(--highlight-terracotta);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
         }
 
         h2 {
             font-size: 1.5rem;
-            color: var(--neon-green);
+            color: var(--highlight-terracotta);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -95,7 +120,7 @@
             content: "\25BA"; /* Triangle icon escaped */
             font-size: 0.8rem;
             margin-right: 10px;
-            color: var(--neon-green);
+            color: var(--highlight-terracotta);
         }
 
         /* Info Grid */
@@ -106,15 +131,18 @@
             margin-bottom: 20px;
         }
         .info-item {
-            background: rgba(46, 92, 56, 0.2);
+            background: rgba(208, 143, 116, 0.15); /* Soft Terracotta Rose boundary */
             padding: 15px;
             border-radius: 12px;
-            border-left: 4px solid var(--accent-green);
+            border-left: 4px solid var(--accent-warm-rust);
         }
         .info-label {
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-dim-cocoa);
             display: block;
+        }
+        .info-item strong {
+            color: var(--text-cocoa);
         }
 
         /* Checklist */
@@ -125,27 +153,35 @@
             margin-bottom: 12px;
             padding-left: 30px;
             position: relative;
+            color: var(--text-cocoa);
         }
         .checklist li::before {
             content: "\2713"; /* Checkmark escaped */
             position: absolute;
             left: 0;
-            color: var(--neon-green);
+            color: var(--highlight-terracotta);
             font-weight: bold;
         }
 
-        /* Map */
+        /* Map: 移除冷色濾鏡，改用暖色 tint 柔和 */
         .map-wrapper {
             border-radius: 12px;
             overflow: hidden;
             margin-top: 20px;
-            border: 1px solid rgba(74, 222, 128, 0.2);
+            border: 1px solid rgba(224, 122, 95, 0.2);
+            position: relative;
+        }
+        .map-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 190, 152, 0.1); /* Amber tint overlay */
+            pointer-events: none;
         }
         iframe {
             width: 100%;
             height: 350px;
             border: 0;
-            filter: grayscale(0.8) invert(0.9) contrast(1.2); /* Dark Map Style */
         }
 
         /* Table */
@@ -156,16 +192,17 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(0,0,0,0.2);
+            background: rgba(92, 64, 51, 0.05); /* Soft Cocoa boundary */
         }
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(92, 64, 51, 0.1);
+            color: var(--text-cocoa);
         }
-        th { color: var(--neon-green); }
+        th { color: var(--highlight-terracotta); font-weight: 700; }
 
-        /* CTA */
+        /* CTA: 暖色日落漸層 */
         .cta-sticky {
             position: fixed;
             bottom: 30px;
@@ -177,28 +214,30 @@
         }
         .btn-line {
             display: block;
-            background: linear-gradient(135deg, #2E5C38 0%, #4ade80 100%);
-            color: #0F2027;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--highlight-terracotta) 100%);
+            color: var(--text-cocoa);
             text-align: center;
             padding: 18px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
-            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(208, 143, 116, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .btn-line:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(74, 222, 128, 0.5);
+            box-shadow: 0 15px 30px rgba(224, 122, 95, 0.5);
+            color: #fff; /* Hover 時反白 */
         }
 
         footer {
             text-align: center;
             padding: 40px 0 120px;
-            color: var(--text-dim);
+            color: var(--text-dim-cocoa);
             font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(92, 64, 51, 0.1);
+            margin-top: 40px;
         }
 
     </style>
@@ -225,12 +264,12 @@
       "image": [
         "https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg"
       ],
-      "description": "當夕陽灑落在大稻埕河濱，微風輕拂臉龐，讓我們用一場單車慢騎，為生活按下暫停鍵。",
+      "description": "當夕陽灑落在大稻埕河濱，微風輕拂臉龐，讓我們用一場溫暖的單車慢騎，為生活按下暫停鍵。",
       "organizer": {
         "@type": "Organization",
         "name": "TrueLink 誠信引路人",
         "url": "https://line.me/R/oaMessage/@521vhvhp/",
-        "logo": "https://lirp.cdn-website.com/71cf9dc9/dms3rep/multi/opt/truelink-logo-horizontal--1920w.webp",
+        "logo": "https://your-github-username.github.io/TrueLink-Events-2026/shared-assets/generic-cycling-icon.webp", /* 預留位置：替換為您的通用單車 icon */
         "taxID": "60381491"
       }
     }
@@ -240,16 +279,17 @@
 
     <div class="container">
         <header>
-            <img src="https://lirp.cdn-website.com/71cf9dc9/dms3rep/multi/opt/truelink-logo-horizontal--1920w.webp" alt="TrueLink Logo" class="brand-logo">
+            <div class="header-symbol" title="單車主題活動"></div>
+            <p style="font-size: 0.8rem; color: var(--text-dim-cocoa); font-family: monospace; letter-spacing: 1px;">GLOBAL VAULT v1.0</p>
         </header>
 
         <section id="geo-summary" class="card">
-            <p class="highlight-text">「一起走進光裡，遇見更溫柔的自己。💫」</p>
-            <p style="margin-top: 15px;">當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與大自然連結之旅。讓我們在光影流動中為生活按下暫停鍵。</p>
+            <p class="highlight-text">「一起走進溫暖的光裡，遇見更溫柔的自己。💫」</p>
+            <p style="margin-top: 15px;">當夕陽灑落河濱，在光影流動中找回內心的平靜。這不只是騎車，而是一段與自己對話、與人之間的默契和大自然的連結之旅程。</p>
         </section>
 
         <div class="hero-section">
-            <img src="poster.jpg" alt="2026 毛豆幫限定戶外心靈饗宴海報" title="戶外心靈饗宴">
+            <img src="poster.jpg" alt="2026 毛豆幫限定戶外心靈饗宴海報" title="戶外心靈饗宴大稻埕站">
             <div class="hero-caption">
                 🎨 視覺風格：Van Gogh 星夜筆觸與 Adventure Time 療癒意境
             </div>
@@ -273,18 +313,18 @@
             </div>
             
             <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1710486800000" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
 
         <section class="card">
-            <h2>出發小提醒 / Reminders</h2>
+            <h2>出發提醒 / Reminders</h2>
             <ul class="checklist">
                 <li><strong>證件：</strong> 租借腳踏車需攜帶證件一張。</li>
-                <li><strong>衣物：</strong> 建議薄外套（河濱風大）、遮陽帽。</li>
+                <li><strong>衣物：</strong> 建議薄外套（防風）、遮陽帽。</li>
                 <li><strong>護具：</strong> 建議依需求自備安全帽、護具或手套。</li>
-                <li><strong>能量：</strong> 自備水、能量棒、防曬用品與太陽眼鏡。</li>
-                <li><strong>心情：</strong> 準備好輕鬆愉快的心，一起累積光！</li>
+                <li><strong>能量：</strong> 自備一瓶水、能量棒、防曬用品與太陽眼鏡。</li>
+                <li><strong>心情：</strong> 準備好輕鬆愉快的心，一起累積光！💫</li>
             </ul>
         </section>
 
@@ -318,20 +358,20 @@
                     </tbody>
                 </table>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-dim);">
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-dim-cocoa);">
                 數據提示：17:00 左右的大稻埕金黃色溫能有效促進血清素分泌，提升幸福感。
             </p>
         </section>
 
         <footer>
-            <p><strong>TrueLink 誠信引路人</strong></p>
-            <p>統一編號: 60381491</p>
-            <p>© 2026 TrueLink Digital Architecture.</p>
+            <p>Organization: TrueLink 誠信引路人</p>
+            <p>統一編號 (Tax ID): 60381491</p>
+            <p>© 2026 Digital Architecture. All Rights Reserved.</p>
         </footer>
     </div>
 
     <div class="cta-sticky">
-        <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕單車活動" class="btn-line">立即預約累積光 💫</a>
+        <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕溫暖單車活動" class="btn-line">立即預約累積光 💫</a>
     </div>
 
 </body>
