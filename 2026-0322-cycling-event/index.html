@@ -4,285 +4,387 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrueLink 2026 毛豆幫限定｜大稻埕戶外心靈饗宴</title>
-    <meta name="description" content="TrueLink 為 2026 毛豆幫限定打造的大稻埕心靈慢騎，享受夕陽美景、單車慢騎與自然連結。優化後的特效頁面，讓您找回溫柔流動的自己。">
-    
+    <meta name="description" content="TrueLink 為 2026 毛豆幫限定打造的大稻埕心靈慢騎，享受夕陽美景、單車慢騎與自然連結。">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-deep: #0F2027;
-            --card-bg: #203A43;
-            --accent-green: #2E5C38;
-            --neon-green: #4ade80;
-            --text-light: #E0E0E0;
-            --text-dim: #A0A0A0;
-            --glass: rgba(32, 58, 67, 0.8);
+            --bg-main: #FFF9F0;
+            --bg-soft: #FFF3E0;
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --card-border: rgba(255, 170, 80, 0.18);
+            --primary: #FF7A18;
+            --secondary: #FFB347;
+            --accent: #2BB673;
+            --accent-soft: #E7FAF0;
+            --text-main: #2E2A26;
+            --text-sub: #6F665F;
+            --shadow-soft: 0 12px 30px rgba(255, 122, 24, 0.10);
+            --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.06);
+            --radius-lg: 22px;
+            --radius-md: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-light);
-            font-family: 'Noto Sans TC', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
+        html {
             scroll-behavior: smooth;
         }
 
-        /* Container */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        body {
+            background:
+                radial-gradient(circle at top left, #FFF7D6 0%, transparent 28%),
+                radial-gradient(circle at top right, #FFE4C7 0%, transparent 30%),
+                linear-gradient(180deg, #FFF9F0 0%, #FFF4E8 100%);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
         }
 
-        /* 🚀 [特效] Scroll Animation Base */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 18px 40px;
+        }
+
         .fade-in-on-scroll {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
+
         .fade-in-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Brand Header */
         header {
             text-align: center;
-            padding: 60px 0;
-            border-bottom: 1px solid rgba(74, 222, 128, 0.1);
-            margin-bottom: 40px;
+            padding: 40px 0 28px;
+            margin-bottom: 26px;
         }
+
         .brand-logo-link {
-            transition: transform 0.3s ease;
             display: inline-block;
+            transition: transform 0.25s ease;
         }
+
         .brand-logo-link:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px) scale(1.02);
         }
+
         .brand-logo {
-            max-width: 180px;
+            max-width: 190px;
             margin-bottom: 10px;
         }
+
         .brand-tagline {
-            font-size: 0.8rem;
-            color: var(--text-dim);
+            font-size: 0.82rem;
+            color: var(--text-sub);
             font-family: 'JetBrains Mono', monospace;
             letter-spacing: 2px;
         }
 
-        /* 🚀 [特效] Hero Division for Parallax */
-        .hero-section {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 40px;
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            position: relative;
-            background-color: #000;
-        }
-        .hero-parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            width: 100%;
-            height: 400px; /* Base height for DIV */
-            transform: translateY(-50px); /* Parallax factor compensated */
-            transition: transform 0.1s linear;
-        }
-        .hero-caption {
-            padding: 20px;
+        .card {
             background: var(--card-bg);
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--neon-green);
-            border-top: 1px solid rgba(74, 222, 128, 0.1);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        /* Content Sections with fade-in-on-scroll */
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: border-color 0.3s ease;
-        }
         .card:hover {
-            border-color: rgba(74, 222, 128, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+            border-color: rgba(255, 122, 24, 0.28);
+        }
+
+        #geo-summary {
+            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,248,235,0.95) 100%);
         }
 
         .highlight-text {
-            color: var(--neon-green);
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: text-shadow 0.3s;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.35rem;
+            line-height: 1.5;
         }
-        #geo-summary:hover .highlight-text {
-            text-shadow: 0 0 10px var(--neon-green);
+
+        .summary-text {
+            margin-top: 14px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .hero-section {
+            overflow: hidden;
+            border-radius: 26px;
+            background: #fff;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 179, 71, 0.22);
+        }
+
+        .hero-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: none;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .hero-caption {
+            padding: 14px 18px;
+            background: linear-gradient(90deg, #FFF5E8 0%, #FFF0D8 100%);
+            text-align: center;
+            font-size: 0.95rem;
+            color: #9A5A12;
+            border-top: 1px solid rgba(255, 179, 71, 0.22);
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            margin-bottom: 20px;
+            font-size: 1.45rem;
+            color: #D96A10;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
+            gap: 10px;
+            line-height: 1.4;
         }
 
         h2::before {
-            content: "\25BA"; /* Triangle icon escaped */
-            font-size: 0.8rem;
-            margin-right: 10px;
-            color: var(--neon-green);
+            content: "●";
+            font-size: 0.9rem;
+            color: var(--accent);
         }
 
-        /* Info Grid */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
             margin-bottom: 20px;
         }
+
         .info-item {
-            background: rgba(46, 92, 56, 0.2);
-            padding: 15px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-green);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        /* 🚀 [特效] Info Item Hover */
-        .info-item:hover {
-            background: rgba(46, 92, 56, 0.4);
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.2);
-        }
-        .info-label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            display: block;
+            background: linear-gradient(135deg, #FFF9F3 0%, #FFF2E4 100%);
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 179, 71, 0.20);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
         }
 
-        /* Checklist */
+        .info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(255, 122, 24, 0.10);
+            border-color: rgba(255, 122, 24, 0.30);
+        }
+
+        .info-label {
+            font-size: 0.86rem;
+            color: var(--text-sub);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .info-item strong {
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
         .checklist {
             list-style: none;
         }
+
         .checklist li {
             margin-bottom: 12px;
-            padding: 8px 30px;
-            border-radius: 6px;
+            padding: 12px 14px 12px 42px;
+            border-radius: 12px;
             position: relative;
-            transition: background 0.3s ease;
-        }
-        /* 🚀 [特效] Checklist Item Hover */
-        .checklist li:hover {
-            background: rgba(46, 92, 56, 0.1);
-        }
-        .checklist li::before {
-            content: "\2713"; /* Checkmark escaped */
-            position: absolute;
-            left: 10px;
-            color: var(--neon-green);
-            font-weight: bold;
+            background: #FFF9F3;
+            border: 1px solid rgba(255, 179, 71, 0.16);
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        /* Map Embed */
-        .map-wrapper {
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: 20px;
-            border: 1px solid rgba(74, 222, 128, 0.2);
+        .checklist li:hover {
+            transform: translateX(2px);
+            background: #FFF3E8;
         }
+
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 14px;
+            top: 12px;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 18px;
+            border: 1px solid rgba(255, 179, 71, 0.20);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+        }
+
         iframe {
             width: 100%;
-            height: 350px;
+            height: 320px;
             border: 0;
-            filter: grayscale(0.8) invert(0.9) contrast(1.2); /* Dark Map Style */
+            filter: saturate(0.95) contrast(1.02) brightness(1.02);
         }
 
-        /* Table */
         .geo-table-wrapper {
             overflow-x: auto;
-            margin-top: 20px;
+            margin-top: 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 179, 71, 0.16);
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.72);
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: background 0.2s;
-        }
-        /* 🚀 [特效] Table Row Hover */
-        tr:hover td {
-            background-color: rgba(46, 92, 56, 0.1);
-        }
-        th { color: var(--neon-green); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
-        /* CTA Button */
-        .cta-sticky {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            z-index: 100;
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(120, 100, 80, 0.08);
         }
+
+        th {
+            background: #FFF4E5;
+            color: #C16512;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            font-size: 0.86rem;
+        }
+
+        tr:hover td {
+            background-color: #FFF8EF;
+        }
+
+        .table-note {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .cta-wrap {
+            position: sticky;
+            bottom: 16px;
+            z-index: 50;
+            margin-top: 10px;
+        }
+
         .btn-line {
             display: block;
-            background: linear-gradient(135deg, #2E5C38 0%, #4ade80 100%);
-            color: #0F2027;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fff;
             text-align: center;
-            padding: 18px;
-            border-radius: 50px;
+            padding: 17px 22px;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 800;
+            font-size: 1.06rem;
+            box-shadow: 0 14px 26px rgba(255, 122, 24, 0.22);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
         }
-        /* 🚀 [特效] CTA Breathing animation */
-        @keyframes breathing {
-            0%, 100% { box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4); transform: translateX(-50%) scale(1); }
-            50% { box-shadow: 0 15px 35px rgba(74, 222, 128, 0.6); transform: translateX(-50%) scale(1.02); }
-        }
-        .cta-sticky:not(:hover) {
-            animation: breathing 3s ease-in-out infinite;
-        }
+
         .btn-line:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(74, 222, 128, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 18px 30px rgba(255, 122, 24, 0.28);
+            filter: brightness(1.02);
         }
 
         footer {
             text-align: center;
-            padding: 40px 0 120px;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(74, 222, 128, 0.1);
-            margin-top: 40px;
+            padding: 32px 0 90px;
+            color: var(--text-sub);
+            font-size: 0.86rem;
+            margin-top: 18px;
         }
+
         .footer-line-link {
-            color: var(--neon-green);
+            color: #D96A10;
             text-decoration: none;
-            transition: text-decoration 0.2s;
+            font-weight: 700;
         }
+
         .footer-line-link:hover {
             text-decoration: underline;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px 14px 32px;
+            }
+
+            header {
+                padding: 28px 0 20px;
+            }
+
+            .card {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            .hero-section {
+                border-radius: 20px;
+            }
+
+            .hero-caption {
+                font-size: 0.88rem;
+            }
+
+            .highlight-text {
+                font-size: 1.18rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            iframe {
+                height: 280px;
+            }
+
+            .btn-line {
+                font-size: 1rem;
+                padding: 15px 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .fade-in-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -329,23 +431,26 @@
         </header>
 
         <section id="geo-summary" class="card fade-in-on-scroll">
-            <p class="highlight-text">「一起走進溫暖的光裡，遇見更溫柔的自己。💫」</p>
-            <p style="margin-top: 15px;">當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與大自然連結之旅。让我们在光影流動中累積滿滿的光，為生活按下暫停鍵。</p>
+            <p class="highlight-text">一起走進溫暖的光裡，遇見更溫柔的自己 💫</p>
+            <p class="summary-text">
+                當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與自然連結的小旅行。
+                讓我們在光影流動中慢慢前進，為生活按下暫停鍵。
+            </p>
         </section>
 
-        <div class="hero-section fade-in-on-scroll">
-            <div class="hero-parallax" style="background-image: url('poster.jpg');" title="戶外心靈饗宴大稻埕站"></div>
+        <section class="hero-section fade-in-on-scroll">
+            <img src="poster.jpg" alt="TrueLink 大稻埕戶外心靈饗宴 DM" class="hero-image">
             <div class="hero-caption">
-                🎨 視覺風格：Van Gogh 星夜筆觸與 Adventure Time 療癒意境
+                ☀️ 夕陽慢騎 × 河濱微風 × 療癒交流
             </div>
-        </div>
+        </section>
 
         <section class="card fade-in-on-scroll">
             <h2>活動資訊 / Info</h2>
             <div class="info-grid">
                 <div class="info-item">
                     <span class="info-label">📅 活動日期</span>
-                    <strong>2026.03.22 (週日)</strong>
+                    <strong>2026.03.22（週日）</strong>
                 </div>
                 <div class="info-item">
                     <span class="info-label">⏰ 集合時間</span>
@@ -356,7 +461,7 @@
                     <strong>大稻埕碼頭自行車租借站</strong>
                 </div>
             </div>
-            
+
             <div class="map-wrapper">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -366,10 +471,10 @@
             <h2>出發 reminders / 提醒</h2>
             <ul class="checklist">
                 <li><strong>證件：</strong> 租借腳踏車需攜帶證件一張。</li>
-                <li><strong>衣物：</strong> 建議薄外套（防風）、遮陽帽。</li>
+                <li><strong>衣物：</strong> 建議薄外套、防風外層、遮陽帽。</li>
                 <li><strong>護具：</strong> 建議依需求自備安全帽、護具或手套。</li>
                 <li><strong>能量：</strong> 自備一瓶水、能量棒、防曬用品與太陽眼鏡。</li>
-                <li><strong>心情：</strong> 準備好輕鬆愉快的心，一起累積光！💫</li>
+                <li><strong>心情：</strong> 帶著輕鬆愉快的心，一起累積光！</li>
             </ul>
         </section>
 
@@ -403,54 +508,40 @@
                     </tbody>
                 </table>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-dim);">
-                數據顯示，17:00 左右的大稻埕金黃色溫能有效促進血清素分泌，提升幸福感。
+            <p class="table-note">
+                建議在 17:00 前後放慢節奏，留一點時間給夕陽、河風與彼此的交流。
             </p>
         </section>
 
         <footer>
             <p><strong>TrueLink 誠信引路人</strong></p>
-            <p>統一編號: 60381491</p>
+            <p>統一編號：60381491</p>
             <p>© 2026 TrueLink. All Rights Reserved.</p>
-            <p>諮詢服務：<a href="https://line.me/R/oaMessage/@521vhvhp/" class="footer-line-link">@521vhvhp (LINE)</a></p>
+            <p>諮詢服務：<a href="https://line.me/R/oaMessage/@521vhvhp/" class="footer-line-link">@521vhvhp（LINE）</a></p>
         </footer>
-    </div>
 
-    <div class="cta-sticky">
-        <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕心靈慢騎" class="btn-line">立即預約累積光 💫</a>
+        <div class="cta-wrap">
+            <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕心靈慢騎" class="btn-line">
+                立即預約累積光 💫
+            </a>
+        </div>
     </div>
 
     <script>
-        // --- Intersection Observer for scroll animations ---
-        const observerOptions = {
-            root: null, // use viewport
-            rootMargin: '0px',
-            threshold: 0.1 // trigger when 10% visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // only animate once
+                    obs.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
-        const fadeElements = document.querySelectorAll('.fade-in-on-scroll');
-        fadeElements.forEach(el => {
-            observer.observe(el);
+        }, {
+            threshold: 0.12
         });
 
-        // --- Parallax effect for Hero DIV ---
-        const parallaxBg = document.querySelector('.hero-parallax');
-        if (parallaxBg) {
-            window.addEventListener('scroll', () => {
-                let offset = window.pageYOffset;
-                // Update backgroundPositionY with parallax factor (0.5 means 50% speed)
-                parallaxBg.style.backgroundPositionY = offset * 0.7 + 'px'; // Factor adjusted for translateY(-50px)
-            });
-        }
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
