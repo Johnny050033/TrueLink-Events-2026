@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>毛豆幫－戶外心靈饗宴</title>
-<meta name="description" content="毛豆幫小聚活動。3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖與注意事項都在這頁面。">
+<meta name="description" content="毛豆幫小聚活動。3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖、活動流程、報到方式與注意事項都在這頁面。">
 
 <link rel="canonical" href="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/">
 
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="毛豆幫－戶外心靈饗宴">
-<meta property="og:description" content="毛豆幫小聚活動 🌿 3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖與注意事項都在這頁面。">
+<meta property="og:description" content="毛豆幫小聚活動 🌿 3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖、活動流程、報到方式與注意事項都在這頁面。">
 <meta property="og:url" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/">
 <meta property="og:image" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg">
 <meta property="og:image:secure_url" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg">
@@ -34,8 +34,6 @@
     --green:#62b97a;
     --green-soft:#e8f4ea;
     --green-line:#8dc86b;
-    --mint:#f3f8f0;
-    --cream:#f8f1e6;
     --card:#f8f7f6;
     --white:#ffffff;
     --text:#3a3430;
@@ -45,8 +43,6 @@
     --shadow-soft:0 8px 20px rgba(110, 88, 56, .06);
     --radius-xl:34px;
     --radius-lg:28px;
-    --radius-md:20px;
-    --radius-sm:14px;
 }
 
 *{
@@ -201,6 +197,26 @@ header{
     color:var(--text);
 }
 
+.theme-chip-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+}
+
+.theme-chip{
+    display:inline-flex;
+    align-items:center;
+    padding:10px 14px;
+    border-radius:999px;
+    background:#fbf5ec;
+    border:1px solid rgba(229,161,72,.14);
+    color:#986432;
+    font-size:.92rem;
+    font-weight:700;
+    box-shadow:var(--shadow-soft);
+}
+
 .countdown-card{
     background:linear-gradient(135deg, #fff9f3 0%, #f7efe3 100%);
 }
@@ -336,7 +352,7 @@ header{
     width:30px;
     height:30px;
     border-radius:50%;
-    background:var(--green-soft);
+    background:#e8f4ea;
     color:var(--green);
     display:flex;
     align-items:center;
@@ -394,7 +410,7 @@ header{
     bottom:0;
     width:5px;
     border-radius:10px;
-    background:linear-gradient(180deg, var(--gold) 0%, var(--green-line) 55%, var(--green) 100%);
+    background:linear-gradient(180deg, var(--gold) 0%, #8dc86b 55%, var(--green) 100%);
 }
 
 .timeline-item:last-child .timeline-line{
@@ -411,10 +427,6 @@ header{
     border:5px solid #f8f7f6;
     box-shadow:0 4px 10px rgba(212,123,51,.16);
     margin-top:2px;
-}
-
-.timeline-content{
-    padding-top:0;
 }
 
 .time-pill{
@@ -451,6 +463,53 @@ header{
     border:1px solid rgba(229,161,72,.14);
     color:var(--text-soft);
     font-size:.94rem;
+}
+
+.checkin-grid{
+    display:grid;
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    gap:22px;
+    align-items:center;
+}
+
+.qr-card{
+    background:#fff;
+    border:1px solid rgba(229,161,72,.16);
+    border-radius:24px;
+    padding:16px;
+    box-shadow:var(--shadow-soft);
+    text-align:center;
+}
+
+.qr-card img{
+    display:block;
+    width:100%;
+    max-width:260px;
+    margin:0 auto;
+    border-radius:14px;
+    background:#fff;
+}
+
+.qr-caption{
+    margin-top:10px;
+    color:var(--text-soft);
+    font-size:.9rem;
+}
+
+.checkin-content p{
+    color:var(--text-soft);
+    margin-bottom:12px;
+}
+
+.link-box{
+    word-break:break-all;
+    background:#fbf5ec;
+    border:1px solid rgba(229,161,72,.14);
+    border-radius:16px;
+    padding:12px 14px;
+    color:#8e6536;
+    font-size:.9rem;
+    margin-top:14px;
 }
 
 .cta-wrap{
@@ -556,6 +615,14 @@ footer{
     .btn{
         padding:15px 18px;
     }
+
+    .checkin-grid{
+        grid-template-columns:1fr;
+    }
+
+    .qr-card img{
+        max-width:240px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -591,8 +658,14 @@ footer{
         <p class="intro-text">一起走進溫暖的光裡，遇見更溫柔的自己 💫</p>
         <p class="intro-desc">
             3/22 在大稻埕河濱慢騎，一起在夕陽、微風與河岸景色中放鬆身心。
-            這頁整理了集合地點、地圖、活動流程與注意事項，方便大家出發前快速確認。
+            這頁整理了集合地點、地圖、活動流程、報到方式與注意事項，方便大家出發前快速確認。
         </p>
+        <div class="theme-chip-wrap">
+            <span class="theme-chip">慢騎</span>
+            <span class="theme-chip">靜心祝福</span>
+            <span class="theme-chip">自然連結</span>
+            <span class="theme-chip">心得交流</span>
+        </div>
     </section>
 
     <section class="card countdown-card fade">
@@ -601,7 +674,7 @@ footer{
             <div class="countdown-pill">
                 <span id="countdownText" class="countdown-text">距離活動開始還有 3 天 12 小時</span>
             </div>
-            <div class="countdown-sub">活動時間：2026/03/22 14:00</div>
+            <div class="countdown-sub">活動時間：2026/03/22 13:45</div>
         </div>
     </section>
 
@@ -615,7 +688,7 @@ footer{
             </div>
             <div class="info-item">
                 <span class="info-label">集合時間</span>
-                <strong>13:45 集合 / 14:00 出發</strong>
+                <strong>13:45 集合</strong>
             </div>
             <div class="info-item">
                 <span class="info-label">集合地點</span>
@@ -634,6 +707,29 @@ footer{
         <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=大稻埕碼頭自行車租借站" target="_blank" rel="noopener noreferrer">
             開啟 Google Maps 導航
         </a>
+    </section>
+
+    <section class="card fade">
+        <h2 class="section-title">報到方式</h2>
+
+        <div class="checkin-grid">
+            <div class="qr-card">
+                <img src="63202487-2e1b-452c-b306-6af91c746488.png" alt="活動報到 QR Code">
+                <div class="qr-caption">可現場掃描 QR Code 報到</div>
+            </div>
+
+            <div class="checkin-content">
+                <p>如果手機不方便掃碼，也可以直接點擊下面按鈕完成報到。</p>
+
+                <a class="btn btn-primary" href="https://script.google.com/a/~/macros/s/AKfycbzCgr33clI6nTWKVi1M0EXf7jFmSmIAgVU1mi3DjA3wlYdOtsUfVBSjE9mIAP2yCgnZzg/exec?page=qrcode&id=202603151416075467" target="_blank" rel="noopener noreferrer">
+                    點擊此連結報到
+                </a>
+
+                <div class="link-box">
+                    https://script.google.com/a/~/macros/s/AKfycbzCgr33clI6nTWKVi1M0EXf7jFmSmIAgVU1mi3DjA3wlYdOtsUfVBSjE9mIAP2yCgnZzg/exec?page=qrcode&id=202603151416075467
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="card fade">
@@ -672,10 +768,10 @@ footer{
                     <div class="timeline-line"></div>
                     <div class="timeline-dot"></div>
                 </div>
-                <div class="timeline-content">
-                    <div class="time-pill">14:00 - 15:30</div>
-                    <div class="timeline-title">啟程</div>
-                    <div class="timeline-desc">暖身出發、調整呼吸與節奏，讓身體與心情一起慢慢進入今天的河濱步調。</div>
+                <div>
+                    <div class="time-pill">13:45</div>
+                    <div class="timeline-title">集合</div>
+                    <div class="timeline-desc">大家在大稻埕碼頭集合，確認腳踏車與裝備，準備開始今天的旅程。</div>
                 </div>
             </div>
 
@@ -684,10 +780,10 @@ footer{
                     <div class="timeline-line"></div>
                     <div class="timeline-dot"></div>
                 </div>
-                <div class="timeline-content">
-                    <div class="time-pill">15:30 - 17:00</div>
-                    <div class="timeline-title">流動</div>
-                    <div class="timeline-desc">沿著河濱騎行、欣賞風景，在微風與光線裡放鬆身心，享受與自然連結的感覺。</div>
+                <div>
+                    <div class="time-pill">13:55</div>
+                    <div class="timeline-title">光的冥想</div>
+                    <div class="timeline-desc">簡短的靜心時刻，彼此祝福今天的活動順利，也讓身心慢慢沉澱。</div>
                 </div>
             </div>
 
@@ -696,16 +792,52 @@ footer{
                     <div class="timeline-line"></div>
                     <div class="timeline-dot"></div>
                 </div>
-                <div class="timeline-content">
-                    <div class="time-pill">17:00 - 18:00</div>
-                    <div class="timeline-title">沉澱</div>
-                    <div class="timeline-desc">停下來看看夕陽、拍照紀錄、分享感受，把今天的平靜與溫柔帶回日常生活。</div>
+                <div>
+                    <div class="time-pill">14:00</div>
+                    <div class="timeline-title">河濱慢騎</div>
+                    <div class="timeline-desc">沿著河濱開始騎行，在微風與河岸風景中放鬆身心。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div>
+                    <div class="time-pill">15:00 - 15:30</div>
+                    <div class="timeline-title">與自然連結</div>
+                    <div class="timeline-desc">透過舞之禪與抱樹練習，感受大自然的能量，讓身體與心靈重新平衡。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div>
+                    <div class="time-pill">15:30 - 16:30</div>
+                    <div class="timeline-title">心靈饗宴</div>
+                    <div class="timeline-desc">大家一起分享今天的感受與心得，透過交流讓彼此更靠近。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div>
+                    <div class="time-pill">16:30 左右</div>
+                    <div class="timeline-title">自由行程</div>
+                    <div class="timeline-desc">活動結束後可一起前往寧夏夜市（自由參加），輕鬆延續今天的相聚時光。</div>
                 </div>
             </div>
         </div>
 
         <div class="note-box">
-            建議 17:00 前後放慢節奏，留一點時間給夕陽、河風與彼此的交流。
+            流程會依當天現場狀況微調，大家以輕鬆、自在、安全為主。
         </div>
     </section>
 
@@ -738,7 +870,7 @@ function updateCountdown() {
     const countdownEl = document.getElementById('countdownText');
     if (!countdownEl) return;
 
-    const eventDate = new Date('2026-03-22T14:00:00+08:00');
+    const eventDate = new Date('2026-03-22T13:45:00+08:00');
     const now = new Date();
     const diff = eventDate - now;
 
