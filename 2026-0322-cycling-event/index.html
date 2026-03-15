@@ -9,7 +9,6 @@
 
 <link rel="canonical" href="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/">
 
-<!-- LINE / 社群分享 -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="毛豆幫－戶外心靈饗宴">
@@ -465,51 +464,118 @@ header{
     font-size:.94rem;
 }
 
-.checkin-grid{
-    display:grid;
-    grid-template-columns: minmax(240px, 320px) 1fr;
-    gap:22px;
-    align-items:center;
+.checkin-wrapper{
+    display:flex;
+    justify-content:center;
 }
 
-.qr-card{
-    background:#fff;
-    border:1px solid rgba(229,161,72,.16);
-    border-radius:24px;
-    padding:16px;
-    box-shadow:var(--shadow-soft);
-    text-align:center;
-}
-
-.qr-card img{
+.checkin-link{
     display:block;
     width:100%;
-    max-width:260px;
+    max-width:360px;
+    text-decoration:none;
+}
+
+.qr-box{
+    position:relative;
+    background:#fffaf4;
+    border-radius:30px;
+    padding:26px 22px 22px;
+    text-align:center;
+    border:1px solid #f1e4d3;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.checkin-link:hover .qr-box{
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(0,0,0,0.10);
+}
+
+.qr-box::before,
+.qr-box::after{
+    content:"🌿";
+    position:absolute;
+    font-size:28px;
+    opacity:.8;
+}
+
+.qr-box::before{
+    top:18px;
+    left:18px;
+}
+
+.qr-box::after{
+    bottom:18px;
+    right:18px;
+}
+
+.qr-header{
+    position:relative;
+    margin-bottom:14px;
+    z-index:1;
+}
+
+.explorer-dog{
+    font-size:44px;
+    line-height:1;
+    margin-bottom:8px;
+}
+
+.qr-title{
+    font-weight:900;
+    color:var(--orange);
+    font-size:1.15rem;
+    line-height:1.4;
+}
+
+.qr-subtitle{
+    color:var(--text-soft);
+    font-size:.92rem;
+    margin-top:4px;
+}
+
+.qr-frame{
+    background:#fff;
+    border-radius:22px;
+    padding:14px;
+    border:1px solid rgba(229,161,72,.14);
+    box-shadow:var(--shadow-soft);
     margin:0 auto;
-    border-radius:14px;
+}
+
+.qr-image{
+    width:100%;
+    max-width:250px;
+    display:block;
+    margin:0 auto;
+    border-radius:12px;
     background:#fff;
 }
 
-.qr-caption{
-    margin-top:10px;
-    color:var(--text-soft);
-    font-size:.9rem;
-}
-
-.checkin-content p{
-    color:var(--text-soft);
-    margin-bottom:12px;
-}
-
-.link-box{
-    word-break:break-all;
-    background:#fbf5ec;
-    border:1px solid rgba(229,161,72,.14);
-    border-radius:16px;
-    padding:12px 14px;
-    color:#8e6536;
-    font-size:.9rem;
+.qr-note{
     margin-top:14px;
+    font-size:.92rem;
+    color:var(--text-soft);
+}
+
+.qr-action-pill{
+    display:inline-block;
+    margin-top:14px;
+    background:linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+    color:#fff;
+    font-weight:900;
+    font-size:1rem;
+    padding:13px 22px;
+    border-radius:999px;
+    box-shadow:0 10px 22px rgba(212,123,51,.16);
+}
+
+.qr-hint{
+    margin-top:12px;
+    font-size:.84rem;
+    color:#9a8f84;
 }
 
 .cta-wrap{
@@ -616,12 +682,25 @@ footer{
         padding:15px 18px;
     }
 
-    .checkin-grid{
-        grid-template-columns:1fr;
+    .checkin-link{
+        max-width:100%;
     }
 
-    .qr-card img{
-        max-width:240px;
+    .qr-box{
+        padding:22px 16px 18px;
+    }
+
+    .explorer-dog{
+        font-size:40px;
+    }
+
+    .qr-title{
+        font-size:1.04rem;
+    }
+
+    .qr-action-pill{
+        width:100%;
+        padding:14px 18px;
     }
 }
 
@@ -710,25 +789,26 @@ footer{
     </section>
 
     <section class="card fade">
-        <h2 class="section-title">報到方式</h2>
+        <h2 class="section-title">活動報到</h2>
 
-        <div class="checkin-grid">
-            <div class="qr-card">
-                <img src="63202487-2e1b-452c-b306-6af91c746488.png" alt="活動報到 QR Code">
-                <div class="qr-caption">可現場掃描 QR Code 報到</div>
-            </div>
+        <div class="checkin-wrapper">
+            <a class="checkin-link" href="https://script.google.com/a/~/macros/s/AKfycbzCgr33clI6nTWKVi1M0EXf7jFmSmIAgVU1mi3DjA3wlYdOtsUfVBSjE9mIAP2yCgnZzg/exec?page=qrcode&id=202603151416075467" target="_blank" rel="noopener noreferrer">
+                <div class="qr-box">
+                    <div class="qr-header">
+                        <div class="explorer-dog">🧢🐶</div>
+                        <div class="qr-title">掃描 QR Code 報到</div>
+                        <div class="qr-subtitle">或直接點擊這張卡片完成報到</div>
+                    </div>
 
-            <div class="checkin-content">
-                <p>如果手機不方便掃碼，也可以直接點擊下面按鈕完成報到。</p>
+                    <div class="qr-frame">
+                        <img src="qrcode.png" alt="活動報到 QR Code" class="qr-image">
+                    </div>
 
-                <a class="btn btn-primary" href="https://script.google.com/a/~/macros/s/AKfycbzCgr33clI6nTWKVi1M0EXf7jFmSmIAgVU1mi3DjA3wlYdOtsUfVBSjE9mIAP2yCgnZzg/exec?page=qrcode&id=202603151416075467" target="_blank" rel="noopener noreferrer">
-                    點擊此連結報到
-                </a>
-
-                <div class="link-box">
-                    https://script.google.com/a/~/macros/s/AKfycbzCgr33clI6nTWKVi1M0EXf7jFmSmIAgVU1mi3DjA3wlYdOtsUfVBSjE9mIAP2yCgnZzg/exec?page=qrcode&id=202603151416075467
+                    <div class="qr-note">現場可掃碼，手機也可直接點擊報到</div>
+                    <div class="qr-action-pill">點擊此卡片報到</div>
+                    <div class="qr-hint">請將原始 QR Code 檔案命名為 qrcode.png</div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
