@@ -1,492 +1,562 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>毛豆幫－戶外心靈饗宴</title>
-    <meta name="description" content="毛豆幫限定打造的大稻埕心靈慢騎，享受夕陽美景、單車慢騎與自然連結。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毛豆幫－戶外心靈饗宴</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-main: #FFF9F0;
-            --bg-soft: #FFF3E0;
-            --card-bg: rgba(255, 255, 255, 0.88);
-            --card-border: rgba(255, 170, 80, 0.18);
-            --primary: #FF7A18;
-            --secondary: #FFB347;
-            --accent: #2BB673;
-            --accent-soft: #E7FAF0;
-            --text-main: #2E2A26;
-            --text-sub: #6F665F;
-            --shadow-soft: 0 12px 30px rgba(255, 122, 24, 0.10);
-            --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.06);
-            --radius-lg: 22px;
-            --radius-md: 16px;
-        }
+<style>
+:root{
+    --orange:#ff7a18;
+    --gold:#ffb347;
+    --green:#2bb673;
+    --green-soft:#e9fbf2;
+    --cream:#fff9f0;
+    --cream-deep:#fff1df;
+    --white:rgba(255,255,255,.9);
+    --text:#2e2a26;
+    --text-soft:#6f665f;
+    --line:rgba(255,140,60,.16);
+    --shadow:0 14px 34px rgba(255,122,24,.12);
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        body {
-            background:
-                radial-gradient(circle at top left, #FFF7D6 0%, transparent 28%),
-                radial-gradient(circle at top right, #FFE4C7 0%, transparent 30%),
-                linear-gradient(180deg, #FFF9F0 0%, #FFF4E8 100%);
-            color: var(--text-main);
-            font-family: 'Noto Sans TC', sans-serif;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+body{
+    font-family:'Noto Sans TC',sans-serif;
+    color:var(--text);
+    line-height:1.8;
+    background:
+        radial-gradient(circle at 10% 10%, #fff6cc 0%, transparent 26%),
+        radial-gradient(circle at 90% 8%, #ffd9b8 0%, transparent 28%),
+        radial-gradient(circle at 50% 100%, #ffe8c9 0%, transparent 35%),
+        linear-gradient(180deg, #fffaf2 0%, #fff3e5 100%);
+    overflow-x:hidden;
+}
 
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 24px 18px 40px;
-        }
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,.08) 60%, rgba(255,255,255,0) 100%);
+    opacity:.7;
+}
 
-        .fade-in-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
+.container{
+    max-width:900px;
+    margin:0 auto;
+    padding:24px 18px 50px;
+    position:relative;
+    z-index:1;
+}
 
-        .fade-in-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.fade{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .65s ease, transform .65s ease;
+}
 
-        header {
-            text-align: center;
-            padding: 40px 0 28px;
-            margin-bottom: 26px;
-        }
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
 
-        .page-title {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary);
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
+header{
+    text-align:center;
+    padding:44px 0 30px;
+}
 
-        .page-subtitle {
-            font-size: 0.92rem;
-            color: var(--text-sub);
-            letter-spacing: 2px;
-            font-family: 'JetBrains Mono', monospace;
-        }
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:999px;
+    background:linear-gradient(135deg, rgba(43,182,115,.12), rgba(255,179,71,.18));
+    color:#a45b11;
+    font-size:.86rem;
+    font-weight:800;
+    margin-bottom:14px;
+    border:1px solid rgba(255,160,80,.18);
+    backdrop-filter:blur(4px);
+}
 
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-card);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
+.page-title{
+    font-size:2.3rem;
+    font-weight:900;
+    color:var(--orange);
+    line-height:1.25;
+    margin-bottom:10px;
+    letter-spacing:.5px;
+}
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
-            border-color: rgba(255, 122, 24, 0.28);
-        }
+.page-sub{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.88rem;
+    letter-spacing:2px;
+    color:var(--text-soft);
+}
 
-        #geo-summary {
-            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,248,235,0.95) 100%);
-        }
+.card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:28px;
+    margin-bottom:24px;
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+    backdrop-filter:blur(8px);
+}
 
-        .highlight-text {
-            color: var(--primary);
-            font-weight: 900;
-            font-size: 1.35rem;
-            line-height: 1.5;
-        }
+.intro-card{
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.95) 0%, rgba(255,247,237,.95) 100%);
+    position:relative;
+    overflow:hidden;
+}
 
-        .summary-text {
-            margin-top: 14px;
-            color: var(--text-main);
-            font-size: 1rem;
-        }
+.intro-card::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-50px;
+    top:-50px;
+    background:radial-gradient(circle, rgba(255,179,71,.22) 0%, rgba(255,179,71,0) 70%);
+    pointer-events:none;
+}
 
-        .hero-section {
-            overflow: hidden;
-            border-radius: 26px;
-            background: #fff;
-            margin-bottom: 28px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 179, 71, 0.22);
-        }
+.highlight{
+    font-size:1.35rem;
+    font-weight:900;
+    color:var(--orange);
+    line-height:1.5;
+    position:relative;
+    z-index:1;
+}
 
-        .hero-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            background: #fff;
-        }
+.summary{
+    margin-top:12px;
+    color:var(--text);
+    position:relative;
+    z-index:1;
+}
 
-        .hero-caption {
-            padding: 14px 18px;
-            background: linear-gradient(90deg, #FFF5E8 0%, #FFF0D8 100%);
-            text-align: center;
-            font-size: 0.95rem;
-            color: #9A5A12;
-            border-top: 1px solid rgba(255, 179, 71, 0.22);
-        }
+.hero{
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-bottom:26px;
+    border:1px solid rgba(255,179,71,.22);
+}
 
-        h2 {
-            font-size: 1.45rem;
-            color: #D96A10;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            line-height: 1.4;
-        }
+.hero img{
+    display:block;
+    width:100%;
+    height:auto;
+    background:#fff;
+}
 
-        h2::before {
-            content: "●";
-            font-size: 0.9rem;
-            color: var(--accent);
-        }
+.hero-caption{
+    padding:14px 18px;
+    text-align:center;
+    background:linear-gradient(90deg, #fff5e8 0%, #ffefd8 100%);
+    color:#a25b12;
+    font-size:.94rem;
+    font-weight:700;
+}
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
-        }
+h2{
+    font-size:1.42rem;
+    color:#d96a10;
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    line-height:1.4;
+}
 
-        .info-item {
-            background: linear-gradient(135deg, #FFF9F3 0%, #FFF2E4 100%);
-            padding: 16px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 179, 71, 0.20);
-            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-        }
+h2::before{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--green);
+    flex:0 0 auto;
+    box-shadow:0 0 0 6px rgba(43,182,115,.08);
+}
 
-        .info-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 18px rgba(255, 122, 24, 0.10);
-            border-color: rgba(255, 122, 24, 0.30);
-        }
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+    gap:16px;
+    margin-bottom:20px;
+}
 
-        .info-label {
-            font-size: 0.86rem;
-            color: var(--text-sub);
-            display: block;
-            margin-bottom: 6px;
-        }
+.info-item{
+    padding:16px;
+    border-radius:16px;
+    background:linear-gradient(135deg, #fffaf5 0%, #fff2e4 100%);
+    border:1px solid rgba(255,179,71,.16);
+    box-shadow:0 6px 14px rgba(255,122,24,.05);
+    transition:transform .22s ease, box-shadow .22s ease;
+}
 
-        .info-item strong {
-            color: var(--text-main);
-            font-size: 1rem;
-        }
+.info-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 22px rgba(255,122,24,.1);
+}
 
-        .checklist {
-            list-style: none;
-        }
+.info-label{
+    display:block;
+    font-size:.84rem;
+    color:var(--text-soft);
+    margin-bottom:5px;
+}
 
-        .checklist li {
-            margin-bottom: 12px;
-            padding: 12px 14px 12px 42px;
-            border-radius: 12px;
-            position: relative;
-            background: #FFF9F3;
-            border: 1px solid rgba(255, 179, 71, 0.16);
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
+.info-item strong{
+    font-size:1rem;
+}
 
-        .checklist li:hover {
-            transform: translateX(2px);
-            background: #FFF3E8;
-        }
+.map-wrapper{
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid rgba(255,179,71,.18);
+}
 
-        .checklist li::before {
-            content: "✓";
-            position: absolute;
-            left: 14px;
-            top: 12px;
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 1rem;
-        }
+.map-wrapper iframe{
+    width:100%;
+    height:320px;
+    border:0;
+    display:block;
+}
 
-        .map-wrapper {
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 18px;
-            border: 1px solid rgba(255, 179, 71, 0.20);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
-        }
+.checklist{
+    list-style:none;
+    display:grid;
+    gap:12px;
+}
 
-        iframe {
-            width: 100%;
-            height: 320px;
-            border: 0;
-            filter: saturate(0.95) contrast(1.02) brightness(1.02);
-        }
+.checklist li{
+    position:relative;
+    padding:13px 14px 13px 44px;
+    border-radius:14px;
+    background:#fff8ef;
+    border:1px solid rgba(255,179,71,.14);
+}
 
-        .geo-table-wrapper {
-            overflow-x: auto;
-            margin-top: 18px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 179, 71, 0.16);
-        }
+.checklist li::before{
+    content:"✓";
+    position:absolute;
+    left:15px;
+    top:12px;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    border-radius:50%;
+    background:var(--green-soft);
+    color:var(--green);
+    font-weight:900;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255,255,255,0.72);
-        }
+.timeline{
+    position:relative;
+    margin-top:6px;
+}
 
-        th, td {
-            padding: 14px 12px;
-            text-align: left;
-            border-bottom: 1px solid rgba(120, 100, 80, 0.08);
-        }
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:10px;
+    bottom:10px;
+    width:3px;
+    border-radius:3px;
+    background:linear-gradient(180deg, var(--gold), var(--green));
+}
 
-        th {
-            background: #FFF4E5;
-            color: #C16512;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            font-size: 0.86rem;
-        }
+.timeline-item{
+    position:relative;
+    padding-left:64px;
+    margin-bottom:24px;
+}
 
-        tr:hover td {
-            background-color: #FFF8EF;
-        }
+.timeline-item:last-child{
+    margin-bottom:0;
+}
 
-        .table-note {
-            margin-top: 14px;
-            font-size: 0.9rem;
-            color: var(--text-sub);
-        }
+.timeline-dot{
+    position:absolute;
+    left:10px;
+    top:6px;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--orange), var(--gold));
+    border:4px solid #fff7ef;
+    box-shadow:0 6px 14px rgba(255,122,24,.16);
+}
 
-        .cta-wrap {
-            position: sticky;
-            bottom: 16px;
-            z-index: 50;
-            margin-top: 10px;
-        }
+.timeline-time{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.9rem;
+    color:#a35d11;
+    background:#fff4e7;
+    border:1px solid rgba(255,179,71,.16);
+    padding:4px 10px;
+    border-radius:999px;
+    margin-bottom:8px;
+}
 
-        .btn-line {
-            display: block;
-            width: 100%;
-            max-width: 420px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: #fff;
-            text-align: center;
-            padding: 17px 22px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.06rem;
-            box-shadow: 0 14px 26px rgba(255, 122, 24, 0.22);
-            transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
-        }
+.timeline-title{
+    font-size:1.08rem;
+    font-weight:800;
+    color:var(--text);
+    margin-bottom:4px;
+}
 
-        .btn-line:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 18px 30px rgba(255, 122, 24, 0.28);
-            filter: brightness(1.02);
-        }
+.timeline-desc{
+    color:var(--text-soft);
+}
 
-        footer {
-            text-align: center;
-            padding: 32px 0 90px;
-            color: var(--text-sub);
-            font-size: 0.86rem;
-            margin-top: 18px;
-        }
+.note{
+    margin-top:14px;
+    font-size:.92rem;
+    color:var(--text-soft);
+    padding:12px 14px;
+    background:#fff8ef;
+    border-radius:14px;
+    border:1px solid rgba(255,179,71,.12);
+}
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px 14px 32px;
-            }
+.cta-wrap{
+    position:sticky;
+    bottom:14px;
+    z-index:10;
+    margin-top:12px;
+}
 
-            header {
-                padding: 28px 0 20px;
-            }
+.btn{
+    display:block;
+    max-width:440px;
+    margin:0 auto;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    font-weight:900;
+    font-size:1.06rem;
+    padding:18px 22px;
+    border-radius:999px;
+    background:linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+    box-shadow:0 16px 30px rgba(255,122,24,.2);
+    transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
 
-            .page-title {
-                font-size: 1.55rem;
-            }
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 20px 34px rgba(255,122,24,.28);
+    filter:brightness(1.02);
+}
 
-            .card {
-                padding: 22px 18px;
-                border-radius: 18px;
-            }
+footer{
+    text-align:center;
+    padding:32px 0 80px;
+    color:var(--text-soft);
+    font-size:.86rem;
+}
 
-            .hero-section {
-                border-radius: 20px;
-            }
+@media (max-width:768px){
+    .container{
+        padding:16px 14px 34px;
+    }
 
-            .hero-caption {
-                font-size: 0.88rem;
-            }
+    header{
+        padding:28px 0 22px;
+    }
 
-            .highlight-text {
-                font-size: 1.18rem;
-            }
+    .page-title{
+        font-size:1.74rem;
+    }
 
-            h2 {
-                font-size: 1.25rem;
-            }
+    .page-sub{
+        font-size:.8rem;
+        letter-spacing:1.5px;
+    }
 
-            iframe {
-                height: 280px;
-            }
+    .card{
+        padding:22px 18px;
+        border-radius:20px;
+    }
 
-            .btn-line {
-                font-size: 1rem;
-                padding: 15px 18px;
-            }
-        }
+    .hero{
+        border-radius:22px;
+    }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
+    .highlight{
+        font-size:1.18rem;
+    }
 
-            .fade-in-on-scroll {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-    </style>
+    h2{
+        font-size:1.24rem;
+    }
+
+    .map-wrapper iframe{
+        height:280px;
+    }
+
+    .timeline-item{
+        padding-left:58px;
+    }
+
+    .btn{
+        font-size:1rem;
+        padding:16px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+    .fade{
+        opacity:1 !important;
+        transform:none !important;
+    }
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1 class="page-title">毛豆幫－戶外心靈饗宴</h1>
-            <p class="page-subtitle">OUTDOOR HEALING RIDE × DADAOCHENG</p>
-        </header>
+<div class="container">
 
-        <section id="geo-summary" class="card fade-in-on-scroll">
-            <p class="highlight-text">一起走進溫暖的光裡，遇見更溫柔的自己 💫</p>
-            <p class="summary-text">
-                當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與自然連結的小旅行。
-                讓我們在光影流動中慢慢前進，為生活按下暫停鍵。
-            </p>
-        </section>
+    <header class="fade">
+        <div class="badge">毛豆幫限定活動</div>
+        <h1 class="page-title">毛豆幫－戶外心靈饗宴</h1>
+        <p class="page-sub">OUTDOOR HEALING RIDE × DADAOCHENG</p>
+    </header>
 
-        <section class="hero-section fade-in-on-scroll">
-            <img src="https://github.com/Johnny050033/TrueLink-Events-2026/blob/main/2026-0322-cycling-event/poster.jpg?raw=true" alt="毛豆幫－戶外心靈饗宴 DM" class="hero-image">
-            <div class="hero-caption">
-                ☀️ 夕陽慢騎 × 河濱微風 × 療癒交流
+    <section class="card intro-card fade">
+        <p class="highlight">一起走進溫暖的光裡，遇見更溫柔的自己 💫</p>
+        <p class="summary">
+            當夕陽灑落在大稻埕河濱，這不只是騎車，而是一段與自己對話、與自然連結的小旅行。
+            在光影流動中慢慢前進，讓身體放鬆、讓心留白，把城市裡難得的溫柔收進今天。
+        </p>
+    </section>
+
+    <section class="hero fade">
+        <img src="https://raw.githubusercontent.com/Johnny050033/TrueLink-Events-2026/main/2026-0322-cycling-event/poster.jpg" alt="毛豆幫－戶外心靈饗宴 DM">
+        <div class="hero-caption">☀️ 夕陽慢騎 × 河濱微風 × 心靈交流</div>
+    </section>
+
+    <section class="card fade">
+        <h2>活動資訊</h2>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">📅 活動日期</span>
+                <strong>2026.03.22（週日）</strong>
             </div>
-        </section>
-
-        <section class="card fade-in-on-scroll">
-            <h2>活動資訊 / Info</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">📅 活動日期</span>
-                    <strong>2026.03.22（週日）</strong>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">⏰ 集合時間</span>
-                    <strong>13:45 集合 / 14:00 出發</strong>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">📍 集合地點</span>
-                    <strong>大稻埕碼頭自行車租借站</strong>
-                </div>
+            <div class="info-item">
+                <span class="info-label">⏰ 集合時間</span>
+                <strong>13:45 集合 / 14:00 出發</strong>
             </div>
-
-            <div class="map-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+            <div class="info-item">
+                <span class="info-label">📍 集合地點</span>
+                <strong>大稻埕碼頭自行車租借站</strong>
             </div>
-        </section>
-
-        <section class="card fade-in-on-scroll">
-            <h2>出發提醒</h2>
-            <ul class="checklist">
-                <li><strong>證件：</strong>租借腳踏車需攜帶證件一張。</li>
-                <li><strong>衣物：</strong>建議薄外套、防風外層、遮陽帽。</li>
-                <li><strong>護具：</strong>建議依需求自備安全帽、護具或手套。</li>
-                <li><strong>能量：</strong>自備一瓶水、能量棒、防曬用品與太陽眼鏡。</li>
-                <li><strong>心情：</strong>帶著輕鬆愉快的心，一起累積光！</li>
-            </ul>
-        </section>
-
-        <section class="card fade-in-on-scroll">
-            <h2>活動流程</h2>
-            <div class="geo-table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>階段</th>
-                            <th>時間</th>
-                            <th>活動內容</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>啟程</td>
-                            <td>14:00 - 15:30</td>
-                            <td>暖身出發、調整節奏、沿途慢騎</td>
-                        </tr>
-                        <tr>
-                            <td>流動</td>
-                            <td>15:30 - 17:00</td>
-                            <td>河濱騎行、欣賞風景、自由交流</td>
-                        </tr>
-                        <tr>
-                            <td>沉澱</td>
-                            <td>17:00 - 18:00</td>
-                            <td>夕陽停留、拍照紀錄、分享感受</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="table-note">
-                建議在 17:00 前後放慢節奏，留一點時間給夕陽、河風與彼此的交流。
-            </p>
-        </section>
-
-        <div class="cta-wrap">
-            <a href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕心靈慢騎" class="btn-line">
-                立即預約累積光 💫
-            </a>
         </div>
+
+        <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.477038480351!2d121.50551067605053!3d25.051833437576563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a912a729e217%3A0x6d9f6492167d6a5!2z5aSn56S75Z-V56K86aCt6Ieq6KGM6LuK56ef5YCf56uZ!5e0!3m2!1szh-TW!2stw!4v1700000000000" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="card fade">
+        <h2>出發提醒</h2>
+        <ul class="checklist">
+            <li><strong>證件：</strong>租借腳踏車需攜帶證件一張。</li>
+            <li><strong>衣物：</strong>建議薄外套、防風外層、遮陽帽。</li>
+            <li><strong>護具：</strong>依需求自備安全帽、護具或手套。</li>
+            <li><strong>補給：</strong>準備飲水、能量棒、防曬用品與太陽眼鏡。</li>
+            <li><strong>心情：</strong>帶著輕鬆愉快的心，一起慢慢累積光。</li>
+        </ul>
+    </section>
+
+    <section class="card fade">
+        <h2>活動流程</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">14:00 - 15:30</div>
+                <div class="timeline-title">啟程</div>
+                <div class="timeline-desc">暖身出發、調整呼吸與節奏，從城市切換到河濱步調，慢慢進入今天的療癒狀態。</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">15:30 - 17:00</div>
+                <div class="timeline-title">流動</div>
+                <div class="timeline-desc">沿著河濱騎行、欣賞沿途風景，在微風與夕陽前的光線裡感受身體與自然的連結。</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">17:00 - 18:00</div>
+                <div class="timeline-title">沉澱</div>
+                <div class="timeline-desc">停下來看看夕陽、拍照留念、分享感受，把今天的平靜與溫柔帶回日常。</div>
+            </div>
+        </div>
+
+        <p class="note">建議 17:00 前後放慢節奏，留一點時間給夕陽、河風與彼此的交流。</p>
+    </section>
+
+    <div class="cta-wrap fade">
+        <a class="btn" href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕心靈慢騎">
+            立即預約累積光 💫
+        </a>
     </div>
 
-    <script>
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12
-        });
+    <footer class="fade">
+        <p><strong>毛豆幫戶外活動</strong></p>
+        <p>© 2026 Outdoor Healing Ride</p>
+    </footer>
 
-        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll('.fade').forEach(el => {
+    observer.observe(el);
+});
+</script>
+
 </body>
 </html>
