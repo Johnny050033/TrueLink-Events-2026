@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>毛豆幫－戶外心靈饗宴</title>
-
 <meta name="description" content="毛豆幫小聚活動。3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖與注意事項都在這頁面。">
 
 <link rel="canonical" href="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/">
@@ -18,249 +16,754 @@
 <meta property="og:description" content="毛豆幫小聚活動 🌿 3/22 大稻埕河濱慢騎，一起在夕陽與微風中放鬆身心。集合地點、地圖與注意事項都在這頁面。">
 <meta property="og:url" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/">
 <meta property="og:image" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg">
+<meta property="og:image:secure_url" content="https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/poster.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+    --orange:#d47b33;
+    --orange-deep:#b86728;
+    --gold:#e5a148;
+    --green:#62b97a;
+    --green-soft:#e8f4ea;
+    --green-line:#8dc86b;
+    --mint:#f3f8f0;
+    --cream:#f8f1e6;
+    --card:#f8f7f6;
+    --white:#ffffff;
+    --text:#3a3430;
+    --text-soft:#7a726c;
+    --line:#eadcc9;
+    --shadow:0 12px 30px rgba(110, 88, 56, .08);
+    --shadow-soft:0 8px 20px rgba(110, 88, 56, .06);
+    --radius-xl:34px;
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-font-family:'Noto Sans TC',sans-serif;
-margin:0;
-background:#fff8ef;
-color:#2e2a26;
-line-height:1.8;
+    font-family:'Noto Sans TC',sans-serif;
+    color:var(--text);
+    line-height:1.8;
+    background:
+        radial-gradient(circle at 0% 0%, #f5ecdd 0%, transparent 22%),
+        radial-gradient(circle at 100% 0%, #f7ead7 0%, transparent 22%),
+        linear-gradient(180deg, #fbf6ee 0%, #f7efe2 100%);
+    overflow-x:hidden;
 }
 
 .container{
-max-width:900px;
-margin:auto;
-padding:25px;
+    max-width:920px;
+    margin:0 auto;
+    padding:22px 18px 44px;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 header{
-text-align:center;
-margin-bottom:30px;
+    text-align:center;
+    padding:28px 0 24px;
 }
 
-.title{
-font-size:2rem;
-font-weight:900;
-color:#ff7a18;
+.header-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(229,161,72,.2);
+    border-radius:999px;
+    padding:8px 14px;
+    color:var(--orange-deep);
+    font-size:.9rem;
+    font-weight:800;
+    margin-bottom:12px;
+    box-shadow:var(--shadow-soft);
 }
 
-.subtitle{
-font-family:'JetBrains Mono';
-font-size:.9rem;
-color:#777;
+.header-badge::before{
+    content:"";
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 7px rgba(98,185,122,.12);
 }
 
-.hero{
-border-radius:20px;
-overflow:hidden;
-margin-bottom:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
+.page-title{
+    font-size:2.2rem;
+    line-height:1.25;
+    font-weight:900;
+    color:var(--orange);
+    letter-spacing:.5px;
+    margin-bottom:8px;
 }
 
-.hero img{
-width:100%;
-display:block;
+.page-subtitle{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.85rem;
+    letter-spacing:2px;
+    color:var(--text-soft);
 }
 
 .card{
-background:white;
-padding:25px;
-border-radius:18px;
-margin-bottom:25px;
-box-shadow:0 6px 16px rgba(0,0,0,.05);
+    background:rgba(249,248,247,.94);
+    border:1px solid rgba(234,220,201,.95);
+    border-radius:var(--radius-xl);
+    padding:28px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(4px);
 }
 
-.highlight{
-font-size:1.2rem;
-font-weight:900;
-color:#ff7a18;
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:var(--orange);
+    font-size:1.95rem;
+    line-height:1.2;
+    font-weight:900;
+    margin-bottom:20px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-margin-top:15px;
+.section-title::before{
+    content:"";
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 10px rgba(98,185,122,.12);
+    flex:0 0 auto;
 }
 
-.box{
-background:#fff4e6;
-padding:15px;
-border-radius:10px;
+.hero{
+    overflow:hidden;
+    border-radius:var(--radius-xl);
+    background:#fff;
+    box-shadow:var(--shadow);
+    margin-bottom:22px;
+    border:1px solid rgba(234,220,201,.85);
 }
 
-.map iframe{
-width:100%;
-height:300px;
-border:0;
-border-radius:12px;
+.hero img{
+    display:block;
+    width:100%;
+    height:auto;
+    background:#fff;
 }
 
-ul{
-padding-left:20px;
+.hero-caption{
+    padding:14px 18px;
+    text-align:center;
+    background:linear-gradient(90deg, #f8efe1 0%, #f6ead8 100%);
+    color:#9a6936;
+    font-size:.95rem;
+    font-weight:700;
 }
 
-.timeline{
-border-left:4px solid #ffb347;
-padding-left:20px;
+.intro-text{
+    font-size:1.25rem;
+    line-height:1.6;
+    color:var(--orange);
+    font-weight:900;
+    margin-bottom:10px;
 }
 
-.timeline-item{
-margin-bottom:20px;
+.intro-desc{
+    font-size:1rem;
+    color:var(--text);
 }
 
-.time{
-font-family:'JetBrains Mono';
-color:#ff7a18;
-font-weight:bold;
+.countdown-card{
+    background:linear-gradient(135deg, #fff9f3 0%, #f7efe3 100%);
+}
+
+.countdown-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px;
+}
+
+.countdown-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid rgba(229,161,72,.22);
+    border-radius:999px;
+    padding:12px 16px;
+    box-shadow:var(--shadow-soft);
+}
+
+.countdown-pill::before{
+    content:"⏳";
+    font-size:1rem;
+}
+
+.countdown-text{
+    font-weight:900;
+    color:var(--orange-deep);
+    font-size:1.02rem;
+}
+
+.countdown-sub{
+    color:var(--text-soft);
+    font-size:.95rem;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+    gap:14px;
+    margin-top:8px;
+}
+
+.info-item{
+    background:#fbf5ec;
+    border:1px solid rgba(229,161,72,.14);
+    border-radius:18px;
+    padding:16px 16px 15px;
+    box-shadow:var(--shadow-soft);
+}
+
+.info-label{
+    display:block;
+    font-size:.84rem;
+    color:var(--text-soft);
+    margin-bottom:4px;
+}
+
+.info-item strong{
+    font-size:1rem;
+    color:var(--text);
+}
+
+.map-wrapper{
+    overflow:hidden;
+    border-radius:22px;
+    border:1px solid rgba(229,161,72,.16);
+    margin-top:18px;
+    background:#fff;
+}
+
+.map-wrapper iframe{
+    width:100%;
+    height:320px;
+    border:0;
+    display:block;
 }
 
 .btn{
-display:block;
-text-align:center;
-background:linear-gradient(135deg,#ff7a18,#ffb347);
-color:white;
-padding:18px;
-border-radius:40px;
-font-weight:bold;
-text-decoration:none;
-margin-top:20px;
+    display:block;
+    width:100%;
+    text-align:center;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    border-radius:999px;
+    padding:16px 20px;
+    font-size:1rem;
+    font-weight:900;
+    transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    margin-top:16px;
+    color:#fff;
+    background:linear-gradient(135deg, var(--orange) 0%, var(--gold) 100%);
+    box-shadow:0 12px 24px rgba(212,123,51,.18);
+}
+
+.btn-secondary{
+    margin-top:14px;
+    color:var(--orange-deep);
+    background:#fff;
+    border:1px solid rgba(229,161,72,.22);
+    box-shadow:var(--shadow-soft);
+}
+
+.reminder-list{
+    list-style:none;
+    display:grid;
+    gap:18px;
+    margin-top:10px;
+}
+
+.reminder-item{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    background:#f5efe5;
+    border:1px solid rgba(229,161,72,.12);
+    border-radius:24px;
+    padding:18px 20px;
+    box-shadow:var(--shadow-soft);
+}
+
+.reminder-icon{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:var(--green-soft);
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.45rem;
+    font-weight:900;
+    line-height:1;
+    flex:0 0 auto;
+    margin-top:2px;
+}
+
+.reminder-text{
+    font-size:1rem;
+    color:var(--text);
+}
+
+.reminder-text strong{
+    font-size:1.12rem;
+    font-weight:900;
+    color:var(--text);
+}
+
+.timeline{
+    position:relative;
+    padding-left:0;
+    margin-top:6px;
+}
+
+.timeline-item{
+    position:relative;
+    display:grid;
+    grid-template-columns:70px 1fr;
+    column-gap:22px;
+    margin-bottom:26px;
+}
+
+.timeline-item:last-child{
+    margin-bottom:0;
+}
+
+.timeline-left{
+    position:relative;
+    min-height:148px;
+    display:flex;
+    justify-content:center;
+}
+
+.timeline-item:last-child .timeline-left{
+    min-height:112px;
+}
+
+.timeline-line{
+    position:absolute;
+    top:18px;
+    bottom:0;
+    width:5px;
+    border-radius:10px;
+    background:linear-gradient(180deg, var(--gold) 0%, var(--green-line) 55%, var(--green) 100%);
+}
+
+.timeline-item:last-child .timeline-line{
+    bottom:8px;
+}
+
+.timeline-dot{
+    position:relative;
+    z-index:2;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #e49336 0%, #f2b155 100%);
+    border:5px solid #f8f7f6;
+    box-shadow:0 4px 10px rgba(212,123,51,.16);
+    margin-top:2px;
+}
+
+.timeline-content{
+    padding-top:0;
+}
+
+.time-pill{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#f4ecdf;
+    border:1px solid rgba(229,161,72,.18);
+    color:#9c6a36;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.96rem;
+    font-weight:700;
+    letter-spacing:.5px;
+    margin-bottom:14px;
+}
+
+.timeline-title{
+    font-size:1.08rem;
+    font-weight:900;
+    color:var(--text);
+    margin-bottom:6px;
+}
+
+.timeline-desc{
+    color:var(--text-soft);
+    font-size:1rem;
+}
+
+.note-box{
+    margin-top:18px;
+    padding:14px 16px;
+    border-radius:18px;
+    background:#fbf5ec;
+    border:1px solid rgba(229,161,72,.14);
+    color:var(--text-soft);
+    font-size:.94rem;
+}
+
+.cta-wrap{
+    position:sticky;
+    bottom:14px;
+    z-index:10;
+    margin-top:4px;
 }
 
 footer{
-text-align:center;
-margin-top:40px;
-font-size:.8rem;
-color:#888;
+    text-align:center;
+    padding:12px 0 72px;
+    color:var(--text-soft);
+    font-size:.86rem;
 }
 
+.footer-small{
+    margin-top:4px;
+    font-size:.8rem;
+}
+
+@media (max-width:768px){
+    .container{
+        padding:16px 12px 30px;
+    }
+
+    header{
+        padding:20px 0 18px;
+    }
+
+    .page-title{
+        font-size:1.72rem;
+    }
+
+    .page-subtitle{
+        font-size:.75rem;
+        letter-spacing:1.5px;
+    }
+
+    .card{
+        padding:22px 16px;
+        border-radius:28px;
+    }
+
+    .section-title{
+        font-size:1.58rem;
+        gap:12px;
+        margin-bottom:18px;
+    }
+
+    .section-title::before{
+        width:14px;
+        height:14px;
+        box-shadow:0 0 0 8px rgba(98,185,122,.12);
+    }
+
+    .intro-text{
+        font-size:1.12rem;
+    }
+
+    .map-wrapper iframe{
+        height:260px;
+    }
+
+    .reminder-item{
+        gap:14px;
+        padding:16px;
+        border-radius:22px;
+    }
+
+    .reminder-text strong{
+        font-size:1rem;
+    }
+
+    .timeline-item{
+        grid-template-columns:58px 1fr;
+        column-gap:16px;
+        margin-bottom:22px;
+    }
+
+    .timeline-left{
+        min-height:142px;
+    }
+
+    .timeline-item:last-child .timeline-left{
+        min-height:110px;
+    }
+
+    .timeline-dot{
+        width:28px;
+        height:28px;
+    }
+
+    .time-pill{
+        padding:9px 14px;
+        font-size:.9rem;
+    }
+
+    .timeline-desc{
+        font-size:.96rem;
+    }
+
+    .btn{
+        padding:15px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+
+    .fade{
+        opacity:1 !important;
+        transform:none !important;
+    }
+}
 </style>
-
 </head>
-
 <body>
 
 <div class="container">
 
-<header>
-<div class="title">毛豆幫－戶外心靈饗宴</div>
-<div class="subtitle">OUTDOOR HEALING RIDE × DADAOCHENG</div>
-</header>
+    <header class="fade">
+        <div class="header-badge">毛豆幫小聚活動提醒頁</div>
+        <h1 class="page-title">毛豆幫－戶外心靈饗宴</h1>
+        <p class="page-subtitle">OUTDOOR HEALING RIDE × DADAOCHENG</p>
+    </header>
 
-<div class="hero">
-<img src="https://raw.githubusercontent.com/Johnny050033/TrueLink-Events-2026/main/2026-0322-cycling-event/poster.jpg">
+    <section class="hero fade">
+        <img src="https://raw.githubusercontent.com/Johnny050033/TrueLink-Events-2026/main/2026-0322-cycling-event/poster.jpg" alt="毛豆幫－戶外心靈饗宴 DM">
+        <div class="hero-caption">夕陽慢騎 × 河濱微風 × 心靈交流</div>
+    </section>
+
+    <section class="card fade">
+        <p class="intro-text">一起走進溫暖的光裡，遇見更溫柔的自己 💫</p>
+        <p class="intro-desc">
+            3/22 在大稻埕河濱慢騎，一起在夕陽、微風與河岸景色中放鬆身心。
+            這頁整理了集合地點、地圖、活動流程與注意事項，方便大家出發前快速確認。
+        </p>
+    </section>
+
+    <section class="card countdown-card fade">
+        <h2 class="section-title">活動倒數</h2>
+        <div class="countdown-wrap">
+            <div class="countdown-pill">
+                <span id="countdownText" class="countdown-text">距離活動開始還有 3 天 12 小時</span>
+            </div>
+            <div class="countdown-sub">活動時間：2026/03/22 14:00</div>
+        </div>
+    </section>
+
+    <section class="card fade">
+        <h2 class="section-title">活動資訊</h2>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="info-label">活動日期</span>
+                <strong>2026.03.22（週日）</strong>
+            </div>
+            <div class="info-item">
+                <span class="info-label">集合時間</span>
+                <strong>13:45 集合 / 14:00 出發</strong>
+            </div>
+            <div class="info-item">
+                <span class="info-label">集合地點</span>
+                <strong>大稻埕碼頭自行車租借站</strong>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps?q=大稻埕碼頭自行車租借站&output=embed"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=大稻埕碼頭自行車租借站" target="_blank" rel="noopener noreferrer">
+            開啟 Google Maps 導航
+        </a>
+    </section>
+
+    <section class="card fade">
+        <h2 class="section-title">出發提醒</h2>
+
+        <ul class="reminder-list">
+            <li class="reminder-item">
+                <div class="reminder-icon">✓</div>
+                <div class="reminder-text"><strong>證件：</strong>租借腳踏車需攜帶證件一張。</div>
+            </li>
+            <li class="reminder-item">
+                <div class="reminder-icon">✓</div>
+                <div class="reminder-text"><strong>衣物：</strong>建議薄外套、防風外層與遮陽帽。</div>
+            </li>
+            <li class="reminder-item">
+                <div class="reminder-icon">✓</div>
+                <div class="reminder-text"><strong>護具：</strong>依需求自備安全帽、護具或手套。</div>
+            </li>
+            <li class="reminder-item">
+                <div class="reminder-icon">✓</div>
+                <div class="reminder-text"><strong>補給：</strong>準備飲水、能量棒、防曬用品與太陽眼鏡。</div>
+            </li>
+            <li class="reminder-item">
+                <div class="reminder-icon">✓</div>
+                <div class="reminder-text"><strong>心情：</strong>帶著輕鬆愉快的心，一起慢慢累積光。</div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="card fade">
+        <h2 class="section-title">活動流程</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="time-pill">14:00 - 15:30</div>
+                    <div class="timeline-title">啟程</div>
+                    <div class="timeline-desc">暖身出發、調整呼吸與節奏，讓身體與心情一起慢慢進入今天的河濱步調。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="time-pill">15:30 - 17:00</div>
+                    <div class="timeline-title">流動</div>
+                    <div class="timeline-desc">沿著河濱騎行、欣賞風景，在微風與光線裡放鬆身心，享受與自然連結的感覺。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="time-pill">17:00 - 18:00</div>
+                    <div class="timeline-title">沉澱</div>
+                    <div class="timeline-desc">停下來看看夕陽、拍照紀錄、分享感受，把今天的平靜與溫柔帶回日常生活。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-box">
+            建議 17:00 前後放慢節奏，留一點時間給夕陽、河風與彼此的交流。
+        </div>
+    </section>
+
+    <div class="cta-wrap fade">
+        <a class="btn btn-primary" href="https://line.me/R/oaMessage/@521vhvhp/?我想參加2026毛豆幫大稻埕心靈慢騎" target="_blank" rel="noopener noreferrer">
+            前往 LINE 聯絡 💫
+        </a>
+    </div>
+
+    <footer class="fade">
+        <div><strong>毛豆幫小聚活動</strong></div>
+        <div class="footer-small">© 2026 Outdoor Healing Ride</div>
+    </footer>
+
 </div>
 
-<div class="card">
+<script>
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
 
-<div class="highlight">
-一起走進溫暖的光裡，遇見更溫柔的自己 💫
-</div>
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-<p>
-3/22 大稻埕河濱慢騎。  
-在夕陽、微風與河岸景色中放鬆身心。
-</p>
+function updateCountdown() {
+    const countdownEl = document.getElementById('countdownText');
+    if (!countdownEl) return;
 
-</div>
+    const eventDate = new Date('2026-03-22T14:00:00+08:00');
+    const now = new Date();
+    const diff = eventDate - now;
 
-<div class="card">
+    if (diff <= 0) {
+        countdownEl.textContent = '活動已開始，準備出發 💫';
+        return;
+    }
 
-<h3>活動資訊</h3>
+    const totalHours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(totalHours / 24);
+    const hours = totalHours % 24;
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-<div class="grid">
+    if (days > 0) {
+        countdownEl.textContent = `距離活動開始還有 ${days} 天 ${hours} 小時`;
+    } else if (hours > 0) {
+        countdownEl.textContent = `距離活動開始還有 ${hours} 小時 ${minutes} 分鐘`;
+    } else {
+        countdownEl.textContent = `距離活動開始還有 ${minutes} 分鐘`;
+    }
+}
 
-<div class="box">
-活動日期<br>
-<b>2026.03.22</b>
-</div>
-
-<div class="box">
-集合時間<br>
-<b>13:45</b>
-</div>
-
-<div class="box">
-集合地點<br>
-<b>大稻埕碼頭</b>
-</div>
-
-</div>
-
-</div>
-
-<div class="card map">
-
-<h3>集合地點地圖</h3>
-
-<iframe
-src="https://www.google.com/maps?q=大稻埕碼頭自行車租借站&output=embed">
-</iframe>
-
-<a class="btn"
-href="https://www.google.com/maps/search/?api=1&query=大稻埕碼頭自行車租借站">
-開啟 Google Maps 導航
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>出發提醒</h3>
-
-<ul>
-<li>租借腳踏車需攜帶證件</li>
-<li>建議薄外套與遮陽帽</li>
-<li>可自備安全帽</li>
-<li>準備飲水與防曬</li>
-<li>帶著輕鬆愉快的心</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>活動流程</h3>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<div class="time">14:00 - 15:30</div>
-啟程 · 暖身慢騎
-</div>
-
-<div class="timeline-item">
-<div class="time">15:30 - 17:00</div>
-河濱騎行 · 欣賞風景
-</div>
-
-<div class="timeline-item">
-<div class="time">17:00 - 18:00</div>
-夕陽停留 · 分享交流
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-毛豆幫小聚活動<br>
-© 2026
-
-</footer>
-
-</div>
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
 
 </body>
 </html>
