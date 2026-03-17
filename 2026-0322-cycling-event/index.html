@@ -716,6 +716,59 @@ footer{
         transform:none !important;
     }
 }
+.calendar-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(229,161,72,.3);
+}
+
+.btn-calendar {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-google-cal {
+    background-color: #ffffff;
+    color: #4285F4;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.btn-google-cal:hover {
+    background-color: #f8faff;
+    border-color: #4285F4;
+    transform: translateY(-2px);
+}
+
+.btn-ics-cal {
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    border: 1px solid #d2d2d7;
+}
+
+.btn-ics-cal:hover {
+    background-color: #e8e8ed;
+    transform: translateY(-2px);
+}
+
+.cal-icon {
+    font-size: 1.1rem;
+}
 </style>
 </head>
 <body>
@@ -786,6 +839,15 @@ footer{
         <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=大稻埕碼頭自行車租借站" target="_blank" rel="noopener noreferrer">
             開啟 Google Maps 導航
         </a>
+        
+        <div class="calendar-btn-group">
+            <a href="#" id="googleCalBtn" class="btn-calendar btn-google-cal" target="_blank" rel="noopener noreferrer">
+                <span class="cal-icon">📅</span> Google 行事曆
+            </a>
+            <button id="icsCalBtn" class="btn-calendar btn-ics-cal">
+                <span class="cal-icon">🍎</span> Apple / Outlook
+            </button>
+        </div>
     </section>
 
     <section class="card fade">
@@ -806,7 +868,7 @@ footer{
 
                     <div class="qr-note">現場可掃碼，手機也可直接點擊報到</div>
                     <div class="qr-action-pill">點擊此卡片報到</div>
-                    
+                    <div class="qr-hint">請將原始 QR Code 檔案命名為 qrcode.png</div>
                 </div>
             </a>
         </div>
@@ -975,6 +1037,69 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 60000);
+const eventDetails = {
+    title: '毛豆幫－戶外心靈饗宴 (大稻埕單車慢騎)',
+    description: '13:45 集合，14:00 啟程。一起在夕陽與微風中放鬆身心。記得攜帶：證件(租車用)、薄外套、水與防曬。活動詳情：https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/',
+    location: '大稻埕碼頭自行車租借站',
+    // 注意：Google 日曆與 ICS 格式需要特定的時間字串 (UTC 或 Local)
+    // 這裡使用 2026-03-22 13:45 (TPE time) 到 18:00
+    startDateStr: '20260322T134500', 
+    endDateStr: '20260322T180000',
+    timezone: 'Asia/Taipei'
+};
+
+// 1. 產生 Google Calendar 連結
+function generateGoogleCalendarUrl() {
+    const baseUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+    const params = new URLSearchParams({
+        text: eventDetails.title,
+        dates: `${eventDetails.startDateStr}/${eventDetails.endDateStr}`,
+        details: eventDetails.description,
+        location: eventDetails.location,
+        ctz: eventDetails.timezone
+    });
+    return `${baseUrl}&${params.toString()}`;
+}
+
+// 綁定 Google Calendar 連結到按鈕
+document.getElementById('googleCalBtn').href = generateGoogleCalendarUrl();
+
+// 2. 產生並下載 .ics 檔案 (適用於 Apple Calendar, Outlook)
+function downloadICS() {
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//TrueLink//Event Calendar//TW',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `SUMMARY:${eventDetails.title}`,
+        `DTSTART;TZID=${eventDetails.timezone}:${eventDetails.startDateStr}`,
+        `DTEND;TZID=${eventDetails.timezone}:${eventDetails.endDateStr}`,
+        `LOCATION:${eventDetails.location}`,
+        `DESCRIPTION:${eventDetails.description.replace(/\n/g, '\\n')}`,
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    
+    link.href = url;
+    link.download = 'maodou-outdoor-healing-ride-2026.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+// 綁定 ICS 下載事件
+document.getElementById('icsCalBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    downloadICS();
+});
 </script>
 
 </body>
