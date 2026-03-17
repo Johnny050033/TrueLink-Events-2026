@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TrueLink//Event Calendar//TW
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+SUMMARY:毛豆幫－戶外心靈饗宴 (大稻埕單車慢騎)
+DTSTART;TZID=Asia/Taipei:20260322T134500
+DTEND;TZID=Asia/Taipei:20260322T180000
+LOCATION:大稻埕碼頭自行車租借站
+DESCRIPTION:13:45 集合，14:00 啟程。一起在夕陽與微風中放鬆身心。記得攜帶：證件(租車用)、薄外套、水與防曬。\n\n活動詳情：https://johnny050033.github.io/TrueLink-Events-2026/2026-0322-cycling-event/
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
